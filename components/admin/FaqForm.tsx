@@ -1,23 +1,33 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
-export const FaqEditor = ({ setValue }: { setValue: any }) => {
-  const [count, setCount] = useState(1);
+export const FaqEditor = ({
+  setValue,
+  data,
+}: {
+  setValue: any;
+  data?: {
+    question: string;
+    answer: string;
+    index: number;
+  }[];
+}) => {
+  const [count, setCount] = useState(data ? data.length : 1);
   const [faqData, setFaqData] = useState(() => initializeFaqData(1));
 
   function initializeFaqData(count: number) {
-    const data = [];
+    const arr = [];
     for (let i = 0; i < count; i++) {
-      data.push({
+      arr.push({
         question: "",
         answer: "",
         index: i,
       });
     }
-    return data;
+    return data ? data : arr;
   }
 
   const handleChange = (
@@ -79,11 +89,13 @@ export const FaqEditor = ({ setValue }: { setValue: any }) => {
         >
           <Input
             type="text"
+            defaultValue={`${faqData[l].question}`}
             placeholder="Question"
             onChange={(e) => handleChange(l, "question", e.target.value)}
           />
           <Textarea
             placeholder="Answer"
+            defaultValue={`${faqData[l].answer}`}
             onChange={(e) => handleChange(l, "answer", e.target.value)}
           />
         </div>

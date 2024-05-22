@@ -7,17 +7,8 @@ export async function POST(req: Request) {
   if (user === null) {
     return NextResponse.json({ Message: "Please Login Again!", status: 401 });
   }
-  const {
-    title,
-    url,
-    keywords,
-    description,
-    data,
-    category,
-    expiredAt,
-    faq,
-    id,
-  } = await req.json();
+  const { title, url, keywords, description, data, category, faq, id } =
+    await req.json();
 
   const block = data.blocks;
   let img = " ";
@@ -42,6 +33,7 @@ export async function POST(req: Request) {
         description,
         blog: block,
         category,
+        faq,
       },
     });
 

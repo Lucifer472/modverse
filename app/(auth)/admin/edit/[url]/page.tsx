@@ -1,3 +1,4 @@
+import BlogEdit from "@/components/admin/BlogEdit";
 import SwitchNav from "@/components/admin/SwitchNav";
 import { getBlog } from "@/lib/blog-util";
 import { redirect } from "next/navigation";
@@ -10,7 +11,7 @@ const page = async ({ params }: { params: { url: string } }) => {
   });
 
   if (data === null) return redirect("/admin");
-  // const faq = await getFaq(data.id);
+
   return (
     <section className="bg-slate-100 w-full h-full">
       <div className="global-container w-full h-full bg-white">
@@ -22,32 +23,15 @@ const page = async ({ params }: { params: { url: string } }) => {
             <span className="text-xl font-medium">Edit Blogs</span>
           </div>
           <div>
-            {/* <BlogEdit
-              values={{
-                title,
-                url,
-                // @ts-ignore
-                category,
-                description,
-                keywords,
-                expiredAt,
-              }}
-              id={id}
+            <BlogEdit
+              values={data}
+              id={data.id}
               blogData={{
                 time: 1700482255444,
-                blocks: blog,
+                blocks: data.blog,
                 version: "2.28.2",
               }}
-              faqData={
-                faq.length !== 0
-                  ? {
-                      time: 1700482255444,
-                      blocks: faq[0].faq,
-                      version: "2.28.2",
-                    }
-                  : undefined
-              }
-            /> */}
+            />
           </div>
         </div>
       </div>

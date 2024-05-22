@@ -73,7 +73,7 @@ const BlogList = ({
               <Link href={`/admin/edit/${data.url}`}>Edit</Link>
             </Button>
             <Button variant={"outline"} asChild>
-              <Link href={`/blog/${data.url}`}>View</Link>
+              <Link href={`/${data.url}`}>View</Link>
             </Button>
             <Button
               variant={"destructive"}

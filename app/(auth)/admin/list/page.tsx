@@ -32,7 +32,6 @@ const listPage = async ({
           url: true,
           id: true,
           title: true,
-          state: true,
         },
       });
       return res;
@@ -45,7 +44,6 @@ const listPage = async ({
         url: true,
         id: true,
         title: true,
-        state: true,
       },
     });
     return res;

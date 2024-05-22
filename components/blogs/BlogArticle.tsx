@@ -22,7 +22,7 @@ const BlogArticle = ({
   updatedAt,
 }: BlogArticleProps) => {
   return (
-    <Link href={link} className="py-2 w-full">
+    <Link href={link} className="py-2 w-full sm:w-fit">
       <article className="flex flex-col items-start w-full sm:max-w-[300px] relative p-2 [&>h2]:hover:underline hover:shadow border rounded-md">
         <div className="relative w-full h-[200px]">
           <Image src={img} alt="Fallback" fill style={{ objectFit: "cover" }} />
